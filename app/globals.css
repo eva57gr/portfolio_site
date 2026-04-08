@@ -10,6 +10,8 @@
   --brand-strong: #0a3b7a;
   --accent: #d97706;
   --shadow: 0 24px 70px rgba(12, 40, 102, 0.16);
+  --radius: 1.1rem;
+  --focus-ring: rgba(12, 74, 155, 0.55);
   --font-display: "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Helvetica,
     Arial, sans-serif;
   --font-body: "Segoe UI", "Avenir Next", "Helvetica Neue", Helvetica, Arial,
@@ -39,6 +41,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
 }
 
 .portfolio-shell {
@@ -149,9 +156,16 @@ a {
 }
 
 .panel {
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: 1.3rem;
-  background: var(--surface);
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(
+        135deg,
+        rgba(12, 74, 155, 0.35) 0%,
+        rgba(217, 119, 6, 0.22) 100%
+      )
+      border-box;
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
 }
@@ -198,11 +212,15 @@ a {
 }
 
 .topnav a {
-  transition: color 0.2s ease;
+  padding: 0.42rem 0.62rem;
+  border-radius: 999px;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .topnav a:hover {
   color: var(--ink);
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
 }
 
 .hero-layout {
@@ -279,6 +297,11 @@ h1 span {
 
 .btn:hover {
   transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(12, 74, 155, 0.22), 0 10px 24px rgba(12, 74, 155, 0.28);
 }
 
 .btn-primary {
@@ -440,6 +463,29 @@ h2 {
   font-weight: 700;
 }
 
+.metric-card,
+.capability-card,
+.project-card,
+.experience-card,
+.skill-card,
+.education-card,
+.gallery-item {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.metric-card:hover,
+.capability-card:hover,
+.project-card:hover,
+.experience-card:hover,
+.skill-card:hover,
+.education-card:hover,
+.gallery-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(12, 74, 155, 0.26);
+  box-shadow: 0 18px 45px rgba(12, 74, 155, 0.18);
+}
+
 .projects-grid {
   display: grid;
   gap: 0.9rem;
@@ -454,6 +500,7 @@ h2 {
   margin: 0;
   border-bottom: 1px solid var(--line);
   background: #eaf0fb;
+  position: relative;
 }
 
 .project-image {
@@ -462,6 +509,12 @@ h2 {
   display: block;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  transform-origin: center;
+  transition: transform 380ms ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
 }
 
 .project-body {
@@ -573,6 +626,12 @@ h2 {
   display: block;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  transform-origin: center;
+  transition: transform 420ms ease;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.06);
 }
 
 .education-card {

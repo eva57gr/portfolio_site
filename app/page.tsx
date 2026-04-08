@@ -131,17 +131,6 @@ const projects: Project[] = [
     image: "https://image.thum.io/get/width/1400/noanimate/https://mythinkingcap.ai/"
   },
   {
-    name: "Audiosocket",
-    url: "https://audiosocket.com/",
-    category: "Music Platform",
-    role: "Full-Stack Engineer",
-    contribution:
-      "Contributed to platform capabilities and core user journeys with a focus on responsiveness and scalability.",
-    impact: "Improved user flow consistency and performance across content-heavy interfaces.",
-    stack: ["React", "Node.js", "Media Delivery", "Cloud"],
-    image: "https://image.thum.io/get/width/1400/noanimate/https://audiosocket.com/"
-  },
-  {
     name: "Impakt",
     url: "https://impakt.com/",
     category: "Fitness Tech",
@@ -161,7 +150,7 @@ const projects: Project[] = [
       "Delivered robust frontend modules and backend services, ensuring clean architecture and maintainability.",
     impact: "Strengthened product quality while supporting rapid feature expansion.",
     stack: ["Next.js", "Node.js", "PostgreSQL", "CI/CD"],
-    image: "https://image.thum.io/get/width/1400/noanimate/https://toshimon.io/"
+    image: "https://toshimon.io/images/project-details-banner.png"
   },
   {
     name: "Senja",
@@ -173,17 +162,6 @@ const projects: Project[] = [
     impact: "Enabled faster rollout of customer-facing capabilities with stable performance.",
     stack: ["React", "Next.js", "APIs", "Performance Optimization"],
     image: "/projects/senja.png"
-  },
-  {
-    name: "Stans Footwear",
-    url: "https://www.stansfootwear.com",
-    category: "E-commerce",
-    role: "Full-Stack Engineer",
-    contribution:
-      "Implemented modern storefront and backend integrations with attention to conversion flow and operational stability.",
-    impact: "Enhanced purchasing experience and site performance for online retail users.",
-    stack: ["Next.js", "Commerce APIs", "UX", "Deployment"],
-    image: "https://image.thum.io/get/width/1400/noanimate/https://www.stansfootwear.com/"
   }
 ];
 
@@ -334,8 +312,8 @@ export default function HomePage() {
           <aside className="hero-side">
             <figure className="hero-image-wrap">
               <Image
-                src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1400&q=80"
-                alt="Professional engineering team collaborating"
+                src="/profile.png"
+                alt="Your portrait photo"
                 width={1400}
                 height={980}
                 className="hero-image"
@@ -391,6 +369,7 @@ export default function HomePage() {
                   alt={`Screenshot preview of ${project.name}`}
                   width={1400}
                   height={900}
+                  unoptimized={project.image.startsWith("http")}
                   className="project-image"
                 />
               </figure>
@@ -453,6 +432,7 @@ export default function HomePage() {
                 alt={image.alt}
                 width={1400}
                 height={980}
+                unoptimized={image.src.startsWith("http")}
                 className="gallery-image"
               />
             </figure>
